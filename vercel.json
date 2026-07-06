@@ -2,6 +2,7 @@
   "version": 2,
   "name": "thomas-clothing",
   "buildCommand": "npm install",
+  "outputDirectory": "./",
   "functions": {
     "api/**/*.js": {
       "maxDuration": 10
