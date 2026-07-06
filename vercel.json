@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "rwanda-trad-ecommerce",
+  "name": "thomas-clothing",
   "buildCommand": "npm install",
   "functions": {
     "api/**/*.js": {
