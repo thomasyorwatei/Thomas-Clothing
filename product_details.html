@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Details | Thomas Clothing</title>
+        <link rel="stylesheet" href="/src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body class="ohhh">
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="small-container single-product">
+            <div id="product-detail">
+                <p style="text-align:center;padding:60px">Loading product...</p>
+            </div>
+        </div>
+        <div class="small-container">
+            <div class="child child-2">
+                <h2>Related Products</h2>
+                <p><a href="./products.html">View More</a></p>
+            </div>
+        </div>
+        <div class="small-container">
+            <div class="child" id="related-products"></div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="child">
+                    <div class="footerChild1">
+                        <a href="./index.html" class="logo-text" style="align-items:center;margin-bottom:15px">
+                            <span class="logo-main" style="font-size:20px">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                        <h4>Mail us at: <a href="mailto:contact@rwandatrad.rw">contact@rwandatrad.rw</a></h4>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="linkgoeshere">Payments</a></li>
+                            <li><a href="linkgoeshere">Shipping</a></li>
+                            <li><a href="linkgoeshere">Return Policy</a></li>
+                            <li><a href="linkgoeshere">FAQ Topics</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Our Socials</h3>
+                        <ul>
+                            <li><a href="linkgoeshere">Instagram</a></li>
+                            <li><a href="linkgoeshere">Facebook</a></li>
+                            <li><a href="linkgoeshere">Twitter</a></li>
+                            <li><a href="linkgoeshere">Linkedin</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Registered Office</h3>
+                        <ul>
+                            <li>KN 2 Ave, Kigali City Tower</li>
+                            <li>Nyarugenge, Kigali</li>
+                            <li>Rwanda</li>
+                            <li>-</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="belowfooter">
+                    &copy; Thomas Clothing, 2024 <br>
+                    All rights reserved.
+                </div>
+            </div>
+        </div>
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/products.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Cart.updateBadge();
+                loadProductDetail();
+            });
+        </script>
+    </body>
+</html>

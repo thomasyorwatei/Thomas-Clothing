@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Profile | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="profile.html">My Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="small-container" style="margin-top:60px;margin-bottom:60px">
+            <div id="profile-content">
+                <!-- Profile Header -->
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:40px">
+                    <div>
+                        <h2 id="profile-name">Welcome</h2>
+                        <p id="profile-email" style="font-size:14px;opacity:0.7"></p>
+                    </div>
+                    <button class="btn" id="logout-btn" onclick="Auth.logout()">
+                        <i class="fa fa-sign-out"></i> Logout
+                    </button>
+                </div>
+
+                <!-- Order History -->
+                <h3>My Orders</h3>
+                <div class="line1"></div>
+                <div id="orders-container">
+                    <p style="text-align:center;padding:30px">Loading your orders...</p>
+                </div>
+            </div>
+
+            <!-- Not logged in fallback -->
+            <div id="not-logged-in" style="display:none;text-align:center;padding:80px 20px">
+                <h2>You are not logged in</h2>
+                <p style="margin:20px 0">Please login to view your profile and order history.</p>
+                <a href="./account.html" class="btn">Login / Register</a>
+            </div>
+        </div>
+
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="belowfooter">&copy; Thomas Clothing, 2024. All rights reserved.</div>
+            </div>
+        </div>
+
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                Cart.updateBadge();
+
+                if (!Auth.isLoggedIn()) {
+                    document.getElementById('profile-content').style.display = 'none';
+                    document.getElementById('not-logged-in').style.display = 'block';
+                    return;
+                }
+
+                const user = Auth.getUser();
+                document.getElementById('profile-name').textContent = `Welcome, ${user.first_name} ${user.last_name}`;
+                document.getElementById('profile-email').textContent = user.email;
+
+                try {
+                    const data = await API.get('/api/orders');
+                    const container = document.getElementById('orders-container');
+
+                    if (!data.orders || data.orders.length === 0) {
+                        container.innerHTML = `
+                            <p style="text-align:center;padding:30px">You have no orders yet.</p>
+                            <div style="text-align:center"><a href="./products.html" class="btn">Start Shopping</a></div>
+                        `;
+                        return;
+                    }
+
+                    container.innerHTML = data.orders.map(order => `
+                        <div class="order-card">
+                            <div class="order-card-header">
+                                <div>
+                                    <strong>${order.order_number}</strong>
+                                    <small style="display:block;opacity:0.7">${new Date(order.created_at).toLocaleDateString('en-RW', { day:'2-digit', month:'short', year:'numeric' })}</small>
+                                </div>
+                                <span class="status-badge status-${order.status}">${order.status}</span>
+                                <strong>${new Intl.NumberFormat('en-RW', { style:'currency', currency:'RWF', minimumFractionDigits:0 }).format(order.total_amount)}</strong>
+                            </div>
+                            <div class="order-items-preview">
+                                ${(order.order_items || []).map(item => `
+                                    <div class="order-item-mini">
+                                        <img src="${item.product_image || ''}" alt="${item.product_name}" style="width:50px;border-radius:4px">
+                                        <span>${item.product_name}${item.size ? ` (${item.size})` : ''} × ${item.quantity}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `).join('');
+
+                } catch (err) {
+                    document.getElementById('orders-container').innerHTML =
+                        '<p style="text-align:center;color:salmon">Failed to load orders. Please refresh.</p>';
+                }
+            });
+        </script>
+    </body>
+</html>

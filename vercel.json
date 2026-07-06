@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "name": "rwanda-trad-ecommerce",
+  "buildCommand": "npm install",
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x",
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/products",            "destination": "/products.html" },
+    { "source": "/product/:path*",      "destination": "/product_details.html" },
+    { "source": "/cart",                "destination": "/cart.html" },
+    { "source": "/checkout",            "destination": "/checkout.html" },
+    { "source": "/order-confirmation",  "destination": "/order-confirmation.html" },
+    { "source": "/account",             "destination": "/account.html" },
+    { "source": "/profile",             "destination": "/profile.html" },
+    { "source": "/admin",               "destination": "/admin.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options",  "value": "nosniff" },
+        { "key": "X-Frame-Options",         "value": "DENY" },
+        { "key": "X-XSS-Protection",        "value": "1; mode=block" },
+        { "key": "Referrer-Policy",         "value": "strict-origin-when-cross-origin" }
+      ]
+    },
+    {
+      "source": "/src/js/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    }
+  ]
+}

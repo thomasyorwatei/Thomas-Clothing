@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+        <style>
+            .contact-hero {
+                background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+                padding: 70px 25px;
+                text-align: center;
+                border-bottom: 1px solid #333;
+            }
+
+            .contact-hero h1 {
+                font-size: 38px;
+                color: #ffffff;
+                margin-bottom: 12px;
+                line-height: 1.2;
+            }
+
+            .contact-hero p {
+                color: #909090;
+                font-size: 16px;
+                max-width: 480px;
+                margin: 0 auto;
+                line-height: 1.6;
+            }
+
+            .contact-hero span {
+                color: #5fa387;
+            }
+
+            .contact-layout {
+                display: flex;
+                gap: 40px;
+                max-width: 1100px;
+                margin: 60px auto;
+                padding: 0 25px 60px;
+                flex-wrap: wrap;
+                align-items: flex-start;
+            }
+
+            /* ── Left info panel ── */
+            .contact-info {
+                flex: 1;
+                min-width: 260px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-info h2 {
+                color: #ffffff;
+                font-size: 20px;
+                margin: 0 0 6px;
+                text-align: left;
+            }
+
+            .contact-info p {
+                color: #909090;
+                font-size: 14px;
+                line-height: 1.7;
+                margin: 0;
+            }
+
+            .info-card {
+                background: #1e1e1e;
+                border: 1px solid #333;
+                border-radius: 10px;
+                padding: 20px 22px;
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                transition: border-color 0.2s;
+            }
+
+            .info-card:hover {
+                border-color: #5fa387;
+            }
+
+            .info-card i {
+                font-size: 20px;
+                color: #5fa387;
+                margin-top: 2px;
+                width: 22px;
+                text-align: center;
+                flex-shrink: 0;
+            }
+
+            .info-card-text h4 {
+                color: #e8e8e8;
+                font-size: 14px;
+                font-weight: 600;
+                margin: 0 0 4px;
+            }
+
+            .info-card-text p {
+                color: #888;
+                font-size: 13px;
+                margin: 0;
+                line-height: 1.5;
+            }
+
+            .info-card-text a {
+                color: #5fa387;
+                text-decoration: none;
+            }
+
+            .info-card-text a:hover {
+                text-decoration: underline;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 12px;
+                margin-top: 4px;
+            }
+
+            .social-links a {
+                width: 36px;
+                height: 36px;
+                background: #2a2a2a;
+                border: 1px solid #444;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #aaa;
+                font-size: 14px;
+                transition: all 0.2s;
+                text-decoration: none;
+            }
+
+            .social-links a:hover {
+                background: #5fa387;
+                border-color: #5fa387;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            /* ── Right form panel ── */
+            .contact-form-wrap {
+                flex: 1.4;
+                min-width: 300px;
+                background: #1e1e1e;
+                border: 1px solid #333;
+                border-radius: 12px;
+                padding: 35px;
+            }
+
+            .contact-form-wrap h2 {
+                color: #ffffff;
+                font-size: 20px;
+                margin: 0 0 24px;
+                text-align: left;
+            }
+
+            .cf-row {
+                display: flex;
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+
+            .cf-group {
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                min-width: 200px;
+                margin-bottom: 18px;
+            }
+
+            .cf-group label {
+                font-size: 13px;
+                color: #c0c0c0;
+                margin-bottom: 7px;
+                font-weight: 500;
+            }
+
+            .cf-group input,
+            .cf-group select,
+            .cf-group textarea {
+                background: #242424;
+                border: 1px solid #3a3a3a;
+                border-radius: 7px;
+                padding: 11px 14px;
+                color: #f0f0f0;
+                font-size: 14px;
+                font-family: inherit;
+                outline: none;
+                transition: border-color 0.2s, background 0.2s;
+            }
+
+            .cf-group input:focus,
+            .cf-group select:focus,
+            .cf-group textarea:focus {
+                border-color: #5fa387;
+                background: #2a2a2a;
+            }
+
+            .cf-group input::placeholder,
+            .cf-group textarea::placeholder {
+                color: #555;
+            }
+
+            .cf-group select option {
+                background: #242424;
+                color: #f0f0f0;
+            }
+
+            .cf-group textarea {
+                resize: vertical;
+                min-height: 130px;
+                line-height: 1.6;
+            }
+
+            .cf-submit {
+                width: 100%;
+                padding: 13px;
+                background: #5fa387;
+                border: none;
+                border-radius: 30px;
+                color: #ffffff;
+                font-size: 15px;
+                font-weight: 600;
+                font-family: inherit;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.1s;
+                letter-spacing: 0.3px;
+                margin-top: 4px;
+            }
+
+            .cf-submit:hover { background: #4d8f72; }
+            .cf-submit:active { transform: scale(0.98); }
+            .cf-submit:disabled { background: #3a6a55; cursor: not-allowed; opacity: 0.7; }
+
+            .cf-success {
+                display: none;
+                background: #0d3322;
+                border: 1px solid #2e7d5a;
+                border-radius: 8px;
+                padding: 16px 20px;
+                color: #4cd98a;
+                font-size: 14px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .cf-error {
+                display: none;
+                background: #3d0d0d;
+                border: 1px solid #a02020;
+                border-radius: 8px;
+                padding: 16px 20px;
+                color: #ff6b6b;
+                font-size: 14px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            @media (max-width: 768px) {
+                .contact-hero h1 { font-size: 28px; }
+                .contact-layout { gap: 24px; margin: 30px auto; }
+                .contact-form-wrap { padding: 24px 20px; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html" style="color:#5fa387">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="contact-hero">
+            <h1>Get in <span>Touch</span></h1>
+            <p>Have a question about an order, a product, or just want to say hello? We'd love to hear from you.</p>
+        </div>
+
+        <!-- Main layout -->
+        <div class="contact-layout">
+
+            <!-- Left: Info cards -->
+            <div class="contact-info">
+                <div>
+                    <h2>Contact Information</h2>
+                    <p>We typically respond within 24–48 hours on business days.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fa fa-envelope"></i>
+                    <div class="info-card-text">
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:roujeeey@gmail.com">roujeeey@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <i class="fa fa-map-marker"></i>
+                    <div class="info-card-text">
+                        <h4>Our Location</h4>
+                        <p>KN 2 Ave, Kigali City Tower<br>Nyarugenge, Kigali, Rwanda</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <i class="fa fa-clock-o"></i>
+                    <div class="info-card-text">
+                        <h4>Business Hours</h4>
+                        <p>Monday – Friday: 8am – 6pm<br>Saturday: 9am – 3pm</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <i class="fa fa-share-alt"></i>
+                    <div class="info-card-text">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="contact-form-wrap">
+                <h2>Send Us a Message</h2>
+
+                <div class="cf-success" id="cf-success">
+                    <i class="fa fa-check-circle" style="margin-right:8px"></i>
+                    Your message has been sent! We'll get back to you soon.
+                </div>
+                <div class="cf-error" id="cf-error"></div>
+
+                <form id="contact-form" novalidate>
+                    <div class="cf-row">
+                        <div class="cf-group">
+                            <label for="cf-name">Full Name *</label>
+                            <input type="text" id="cf-name" placeholder="Your name" required>
+                        </div>
+                        <div class="cf-group">
+                            <label for="cf-email">Email Address *</label>
+                            <input type="email" id="cf-email" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    <div class="cf-group">
+                        <label for="cf-subject">Subject</label>
+                        <select id="cf-subject">
+                            <option value="">Select a topic...</option>
+                            <option value="Order Inquiry">Order Inquiry</option>
+                            <option value="Product Question">Product Question</option>
+                            <option value="Return & Refund">Return &amp; Refund</option>
+                            <option value="Shipping">Shipping</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="cf-group">
+                        <label for="cf-message">Message *</label>
+                        <textarea id="cf-message" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="cf-submit" id="cf-submit-btn">
+                        <i class="fa fa-paper-plane" style="margin-right:8px"></i>Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="child">
+                    <div class="footerChild1">
+                        <a href="./index.html" class="logo-text" style="align-items:center;margin-bottom:15px">
+                            <span class="logo-main" style="font-size:20px">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                        <h4>Mail us at: <a href="mailto:roujeeey@gmail.com">roujeeey@gmail.com</a></h4>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="#">Payments</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Our Socials</h3>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Registered Office</h3>
+                        <ul>
+                            <li>KN 2 Ave, Kigali City Tower</li>
+                            <li>Nyarugenge, Kigali</li>
+                            <li>Rwanda</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="belowfooter">&copy; Thomas Clothing, 2024. All rights reserved.</div>
+            </div>
+        </div>
+
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Cart.updateBadge();
+
+                document.getElementById('contact-form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const btn = document.getElementById('cf-submit-btn');
+                    const successEl = document.getElementById('cf-success');
+                    const errorEl = document.getElementById('cf-error');
+
+                    successEl.style.display = 'none';
+                    errorEl.style.display = 'none';
+
+                    const name = document.getElementById('cf-name').value.trim();
+                    const email = document.getElementById('cf-email').value.trim();
+                    const subject = document.getElementById('cf-subject').value;
+                    const message = document.getElementById('cf-message').value.trim();
+
+                    if (!name || !email || !message) {
+                        errorEl.textContent = 'Please fill in all required fields.';
+                        errorEl.style.display = 'block';
+                        return;
+                    }
+
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="fa fa-spinner fa-spin" style="margin-right:8px"></i>Sending...';
+
+                    try {
+                        await API.post('/api/contact', { name, email, subject, message });
+                        successEl.style.display = 'block';
+                        document.getElementById('contact-form').reset();
+                        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    } catch (err) {
+                        errorEl.textContent = err.message || 'Failed to send message. Please try again.';
+                        errorEl.style.display = 'block';
+                    } finally {
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fa fa-paper-plane" style="margin-right:8px"></i>Send Message';
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

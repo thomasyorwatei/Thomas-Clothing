@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Products | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="small-container" style="margin-top:40px">
+            <!-- Filters bar -->
+            <div class="filters-bar">
+                <div class="search-group">
+                    <input type="text" id="search-input" placeholder="Search products..." style="padding:8px 15px;border-radius:20px;border:1px solid #555;background:#222;color:antiquewhite;width:250px">
+                    <button id="search-btn" class="btn" style="margin:0 0 0 10px"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="filter-group" style="display:flex;gap:10px;flex-wrap:wrap">
+                    <select id="category-filter" style="padding:8px;background:#222;color:antiquewhite;border:1px solid #555;border-radius:5px">
+                        <option value="" disabled selected>Category</option>
+                    </select>
+                    <select id="sort-filter" style="padding:8px;background:#222;color:antiquewhite;border:1px solid #555;border-radius:5px">
+                        <option value="" disabled selected>Sort By</option>
+                        <option value="price_asc">Price: Low to High</option>
+                        <option value="price_desc">Price: High to Low</option>
+                        <option value="rating_desc">Best Rated</option>
+                        <option value="created_at_desc">Newest</option>
+                    </select>
+                </div>
+            </div>
+            <div id="products-grid" class="child">
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-1.webp" alt="Black African female model in embroidered Mushanana"></a>
+                    <h4>Embroidered Mushanana</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>78,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-2.webp" alt="Black African male model in Kitenge shirt"></a>
+                    <h4>Kitenge Shirt</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>92,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-3.webp" alt="Black African model in slim-fit Kitenge"></a>
+                    <h4>Slim-fit Kitenge</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>115,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-4.webp" alt="Black African model in traditional dance attire"></a>
+                    <h4>Dance Attire</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>180,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-5.webp" alt="Black African female model in silk Mushanana"></a>
+                    <h4>Silk Mushanana</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>130,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-6.webp" alt="Black African model in Kitenge trousers"></a>
+                    <h4>Kitenge Trousers</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>135,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-7.webp" alt="Black African male model in traditional tunic"></a>
+                    <h4>Traditional Tunic</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>145,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-8.webp" alt="Black African model in premium Umutara"></a>
+                    <h4>Premium Umutara</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>170,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-9.webp" alt="Black African model in daily Kitenge wear"></a>
+                    <h4>Daily Kitenge Wear</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>117,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-10.webp" alt="Black African model in beaded accessories"></a>
+                    <h4>Beaded Accessories</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>60,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-11.webp" alt="Black African model in modern Kitenge outfit"></a>
+                    <h4>Modern Kitenge Outfit</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>74,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-12.webp" alt="Black African model with traditional woven belt"></a>
+                    <h4>Woven Belt</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>39,000 RWF</p>
+                </div>
+            </div>
+            </div>
+            <div id="pagination" class="page-btn"></div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="child">
+                    <div class="footerChild1">
+                        <a href="./index.html" class="logo-text" style="align-items:center;margin-bottom:15px">
+                            <span class="logo-main" style="font-size:20px">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                        <h4>Mail us at: <a href="mailto:contact@rwandatrad.rw">contact@rwandatrad.rw</a></h4>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="#">Payments</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Registered Office</h3>
+                        <ul>
+                            <li>KN 2 Ave, Kigali City Tower</li>
+                            <li>Nyarugenge, Kigali</li>
+                            <li>Rwanda</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="belowfooter">
+                    &copy; Thomas Clothing, 2024 <br>
+                    All rights reserved.
+                </div>
+            </div>
+        </div>
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/products.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                Cart.updateBadge();
+                await loadCategories();
+                await loadProductsPage();
+
+                // Search handler
+                document.getElementById('search-btn').addEventListener('click', () => {
+                    currentFilters.search = document.getElementById('search-input').value;
+                    currentPage = 1;
+                    loadProductsPage();
+                });
+                document.getElementById('search-input').addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') document.getElementById('search-btn').click();
+                });
+
+                // Category filter
+                document.getElementById('category-filter').addEventListener('change', (e) => {
+                    currentFilters.category = e.target.value;
+                    currentPage = 1;
+                    loadProductsPage();
+                });
+
+                // Sort filter
+                document.getElementById('sort-filter').addEventListener('change', (e) => {
+                    const [sort, order] = e.target.value.split('_');
+                    currentFilters.sort = sort;
+                    currentFilters.order = order;
+                    currentPage = 1;
+                    loadProductsPage();
+                });
+            });
+        </script>
+    </body>
+</html>

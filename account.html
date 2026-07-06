@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Account | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="formPage">
+                <div class="btn" id="removeLog" onclick="login()">Existing User? Login</div>
+                <div class="btn" id="removeReg" onclick="register()">New User? Register</div>
+                <form class="showForm" id="loginForm" novalidate>
+                    <h3>Login</h3>
+                    <div id="login-error" style="color:salmon;font-size:13px;text-align:center;display:none"></div>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button type="submit" class="btn" id="login-btn">Login</button>
+                    <a href="#" id="forgot-link" style="font-size:13px">Forgot Password?</a>
+                </form>
+
+                <!-- Forgot Password Form -->
+                <form id="forgotForm" style="display:none" novalidate>
+                    <h3>Reset Password</h3>
+                    <div id="forgot-msg" style="font-size:13px;text-align:center;margin-bottom:10px;display:none"></div>
+
+                    <!-- Step 1: email -->
+                    <div id="forgot-step1">
+                        <input type="email" id="forgot-email" placeholder="Enter your email" required>
+                        <button type="button" class="btn" id="forgot-next-btn">Continue</button>
+                    </div>
+
+                    <!-- Step 2: new password (hidden until email verified) -->
+                    <div id="forgot-step2" style="display:none">
+                        <input type="password" id="forgot-new-password" placeholder="New password (min 8 chars)" required>
+                        <input type="password" id="forgot-confirm-password" placeholder="Confirm new password" required>
+                        <button type="submit" class="btn" id="forgot-reset-btn">Reset Password</button>
+                    </div>
+
+                    <a href="#" id="back-to-login" style="font-size:13px">&#8592; Back to Login</a>
+                </form>
+                <form class="showForm" id="registerForm" novalidate>
+                    <h3>Register</h3>
+                    <div id="register-error" style="color:salmon;font-size:13px;text-align:center;display:none"></div>
+                    <input type="text" id="reg-first" placeholder="First Name" required>
+                    <input type="text" id="reg-last" placeholder="Last Name" required>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                    <input type="password" id="reg-password" placeholder="Password (min 8 chars)" required>
+                    <small>I agree to the following Terms and Conditions*</small>
+                    <button type="submit" class="btn" id="register-btn">Register</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="child">
+                    <div class="footerChild1">
+                        <a href="./index.html" class="logo-text" style="align-items:center;margin-bottom:15px">
+                            <span class="logo-main" style="font-size:20px">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                        <h4>Mail us at: <a href="mailto:contact@rwandatrad.rw">contact@rwandatrad.rw</a></h4>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Registered Office</h3>
+                        <ul>
+                            <li>KN 2 Ave, Kigali City Tower</li>
+                            <li>Nyarugenge, Kigali</li>
+                            <li>Rwanda</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="belowfooter">
+                    &copy; Thomas Clothing, 2024 <br>
+                    All rights reserved.
+                </div>
+            </div>
+        </div>
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Cart.updateBadge();
+
+                // If already logged in, redirect to profile
+                if (Auth.isLoggedIn()) {
+                    window.location.href = '/profile.html';
+                    return;
+                }
+
+                // Forgot password toggle
+                document.getElementById('forgot-link').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('forgotForm').style.display = 'block';
+                });
+                document.getElementById('back-to-login').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('forgotForm').style.display = 'none';
+                    document.getElementById('forgot-step1').style.display = 'block';
+                    document.getElementById('forgot-step2').style.display = 'none';
+                    document.getElementById('forgot-msg').style.display = 'none';
+                    document.getElementById('loginForm').style.display = 'block';
+                });
+
+                // Step 1 — verify email exists
+                document.getElementById('forgot-next-btn').addEventListener('click', async () => {
+                    const btn = document.getElementById('forgot-next-btn');
+                    const msgEl = document.getElementById('forgot-msg');
+                    const email = document.getElementById('forgot-email').value.trim();
+                    msgEl.style.display = 'none';
+
+                    if (!email) {
+                        msgEl.style.color = 'salmon';
+                        msgEl.textContent = 'Please enter your email.';
+                        msgEl.style.display = 'block';
+                        return;
+                    }
+
+                    btn.disabled = true;
+                    btn.textContent = 'Checking...';
+                    try {
+                        const data = await API.post('/api/auth/forgot-password', { email });
+                        if (data.exists) {
+                            document.getElementById('forgot-step1').style.display = 'none';
+                            document.getElementById('forgot-step2').style.display = 'block';
+                        } else {
+                            msgEl.style.color = 'salmon';
+                            msgEl.textContent = 'No account found with that email.';
+                            msgEl.style.display = 'block';
+                            btn.disabled = false;
+                            btn.textContent = 'Continue';
+                        }
+                    } catch (err) {
+                        msgEl.style.color = 'salmon';
+                        msgEl.textContent = err.message || 'Something went wrong.';
+                        msgEl.style.display = 'block';
+                        btn.disabled = false;
+                        btn.textContent = 'Continue';
+                    }
+                });
+
+                // Step 2 — reset password
+                document.getElementById('forgotForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.getElementById('forgot-reset-btn');
+                    const msgEl = document.getElementById('forgot-msg');
+                    const newPassword = document.getElementById('forgot-new-password').value;
+                    const confirmPassword = document.getElementById('forgot-confirm-password').value;
+                    msgEl.style.display = 'none';
+
+                    if (newPassword.length < 8) {
+                        msgEl.style.color = 'salmon';
+                        msgEl.textContent = 'Password must be at least 8 characters.';
+                        msgEl.style.display = 'block';
+                        return;
+                    }
+                    if (newPassword !== confirmPassword) {
+                        msgEl.style.color = 'salmon';
+                        msgEl.textContent = 'Passwords do not match.';
+                        msgEl.style.display = 'block';
+                        return;
+                    }
+
+                    btn.disabled = true;
+                    btn.textContent = 'Updating...';
+                    try {
+                        await API.post('/api/auth/forgot-password', {
+                            email: document.getElementById('forgot-email').value.trim(),
+                            new_password: newPassword
+                        });
+                        msgEl.style.color = '#5fa387';
+                        msgEl.textContent = 'Password updated! You can now log in.';
+                        msgEl.style.display = 'block';
+                        document.getElementById('forgot-step2').style.display = 'none';
+                    } catch (err) {
+                        msgEl.style.color = 'salmon';
+                        msgEl.textContent = err.message || 'Failed to update password.';
+                        msgEl.style.display = 'block';
+                        btn.disabled = false;
+                        btn.textContent = 'Reset Password';
+                    }
+                });
+
+                // Login form
+                document.getElementById('loginForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.getElementById('login-btn');
+                    const errEl = document.getElementById('login-error');
+                    errEl.style.display = 'none';
+                    btn.disabled = true;
+                    btn.textContent = 'Logging in...';
+                    try {
+                        await Auth.login(
+                            document.getElementById('login-email').value,
+                            document.getElementById('login-password').value
+                        );
+                        const redirect = new URLSearchParams(window.location.search).get('redirect');
+                        window.location.href = redirect === 'admin' ? '/admin.html' : '/profile.html';
+                    } catch (err) {
+                        errEl.textContent = err.message || 'Login failed. Please try again.';
+                        errEl.style.display = 'block';
+                        btn.disabled = false;
+                        btn.textContent = 'Login';
+                    }
+                });
+
+                // Register form
+                document.getElementById('registerForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = document.getElementById('register-btn');
+                    const errEl = document.getElementById('register-error');
+                    errEl.style.display = 'none';
+                    btn.disabled = true;
+                    btn.textContent = 'Creating account...';
+                    try {
+                        await Auth.register(
+                            document.getElementById('reg-first').value,
+                            document.getElementById('reg-last').value,
+                            document.getElementById('reg-email').value,
+                            document.getElementById('reg-password').value
+                        );
+                        // Auto-login after register
+                        await Auth.login(
+                            document.getElementById('reg-email').value,
+                            document.getElementById('reg-password').value
+                        );
+                        window.location.href = '/profile.html';
+                    } catch (err) {
+                        errEl.textContent = err.message || 'Registration failed. Please try again.';
+                        errEl.style.display = 'block';
+                        btn.disabled = false;
+                        btn.textContent = 'Register';
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

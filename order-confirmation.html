@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order Confirmed | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html"><img class="cart" src="./images/header/cart.svg"></a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="min-height:calc(100vh - 200px);display:flex;align-items:center;justify-content:center">
+            <div id="confirmation-content" style="text-align:center;max-width:600px;padding:40px">
+                <div id="loading-state">
+                    <p>Loading your order...</p>
+                </div>
+                <div id="success-state" style="display:none">
+                    <div style="font-size:60px;margin-bottom:20px">🎉</div>
+                    <h1 style="color:antiquewhite">Order Confirmed!</h1>
+                    <p style="margin:15px 0">Thank you for your purchase. Your order has been placed successfully.</p>
+                    <div class="order-number-box">
+                        <p>Your Order Number:</p>
+                        <h2 id="order-number-display" style="color:#5fa387;font-size:24px;letter-spacing:2px">—</h2>
+                    </div>
+                    <div id="order-details-box" style="margin:30px 0;text-align:left;background:#333;padding:20px;border-radius:10px">
+                        <div class="totals-row"><span>Order Status:</span><span id="conf-status">—</span></div>
+                        <div class="totals-row"><span>Payment Method:</span><span id="conf-payment">—</span></div>
+                        <div class="totals-row totals-total"><span>Total Paid:</span><span id="conf-total">—</span></div>
+                    </div>
+                    <p style="font-size:14px;margin-bottom:30px">
+                        A confirmation has been recorded. Please keep your order number safe.<br>
+                        Estimated delivery: <strong>2–5 business days</strong> within Rwanda.
+                    </p>
+                    <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap">
+                        <a href="./products.html" class="btn">Continue Shopping</a>
+                        <a href="./profile.html" class="btn" id="view-orders-link" style="display:none">View My Orders</a>
+                    </div>
+                </div>
+                <div id="error-state" style="display:none">
+                    <div style="font-size:60px;margin-bottom:20px">❌</div>
+                    <h2>Order Not Found</h2>
+                    <p>We could not find your order. Please <a href="./index.html">return to the homepage</a>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="belowfooter">&copy; Thomas Clothing, 2024. All rights reserved.</div>
+            </div>
+        </div>
+
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const orderNumber = urlParams.get('order');
+
+                if (!orderNumber) {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('error-state').style.display = 'block';
+                    return;
+                }
+
+                try {
+                    const data = await API.get(`/api/orders/${orderNumber}`);
+                    const order = data.order;
+
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('success-state').style.display = 'block';
+                    document.getElementById('order-number-display').textContent = order.order_number;
+                    document.getElementById('conf-status').textContent = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+                    document.getElementById('conf-payment').textContent = order.payment_method.replace(/_/g, ' ');
+                    document.getElementById('conf-total').textContent = new Intl.NumberFormat('en-RW', {
+                        style: 'currency', currency: 'RWF', minimumFractionDigits: 0
+                    }).format(order.total_amount);
+
+                    document.title = `Order ${order.order_number} Confirmed | Thomas Clothing`;
+
+                    if (Auth.isLoggedIn()) {
+                        document.getElementById('view-orders-link').style.display = 'inline-block';
+                    }
+
+                } catch (err) {
+                    document.getElementById('loading-state').style.display = 'none';
+                    document.getElementById('error-state').style.display = 'block';
+                }
+            });
+        </script>
+    </body>
+</html>

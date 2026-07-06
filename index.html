@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thomas Clothing | Premium Collection</title>
+        <link rel="stylesheet" href="/src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <!-- User notification bell (shown when logged in) -->
+                    <span id="notif-bell" style="display:none;position:relative;cursor:pointer;font-size:20px;margin-left:12px" title="Notifications">
+                        🔔
+                        <span id="notif-badge" style="display:none;position:absolute;top:-6px;right:-8px;background:#c0392b;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;text-align:center;line-height:18px;font-weight:bold"></span>
+                    </span>
+                    <div id="notif-dropdown" style="display:none;position:absolute;right:20px;top:65px;width:300px;max-height:360px;overflow-y:auto;background:#fff;border:1px solid #ddd;border-radius:8px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.15);color:#333"></div>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="headerimg">
+            <h1>Celebrate Rwandan Heritage with Timeless Elegance</h1>
+            <h3>Discover the finest Mushanana and Umutara collections. Starting at just 45,000 RWF*</h3>
+            <a href="./products.html" class="btn">Explore Collection &#8594;</a>
+        </div>
+        <div class="offer">
+            <div class="small-container">
+                <div class="child">
+                    <div class="halfchild">
+                        <img src="./images/promos/exclusive.png" class="offer-img">
+                    </div>
+                    <div class="halfchild">
+                        <p>Exclusively available here</p>
+                        <h1>Hand-woven Agaseke Basket</h1>
+                        <small>
+                            The iconic symbol of Rwandan peace and hospitality. Crafted with organic sisal fiber by local cooperatives in Southern Province.<br>
+                        </small>
+                        <a href="./product_details.html" class="btn">Buy Now &#8594;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="small-container">
+            <h2>Hot Releases</h2>
+            <div class="line1"></div>
+            <div class="child" id="featured-products"><p style="text-align:center;padding:40px">Loading...</p></div>
+            <h2>Latest Releases</h2>
+            <div class="line1"></div>
+            <div class="child" id="latest-products"><p style="text-align:center;padding:40px">Loading...</p></div>
+        </div>
+        <!-- STATIC FALLBACK REMOVED - products now load dynamically -->
+        <div class="small-container" style="display:none">
+            <div class="child">
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-1.webp" alt="Black African male model in a tailored Kitenge shirt"></a>
+                    <h4>Men's Kitenge Shirt</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>55,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-2.webp" alt="Black African female model in modern Rwandan attire"></a>
+                    <h4>Hand-crafted Sandals</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>180,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-3.webp" alt="Black African male model wearing an Umutara wrap"></a>
+                    <h4>Umutara Wrap</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>78,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-4.webp" alt="Black African female model showcasing a silk Mushanana"></a>
+                    <h4>Silk Mushanana</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>52,000 RWF</p>
+                </div>
+            </div>
+            <!-- static products removed, loaded via JS -->
+            <div class="child" style="display:none">
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-5.webp" alt="Black African model in premium Kitenge jacket"></a>
+                    <h4>Kitenge Jacket</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>83,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-6.webp" alt="Black African model wearing a patterned Rwandan tunic"></a>
+                    <h4>Patterned Tunic</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p>75,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-7.webp" alt="Black African female model in modern Kitenge trousers"></a>
+                    <h4>Kitenge Trousers</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>60,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-8.webp" alt="Black African model in traditional wedding attire"></a>
+                    <h4>Wedding Mushanana Set</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>78,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-9.webp" alt="Black African model with beaded accessories"></a>
+                    <h4>Beaded Necklaces</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>21,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-10.webp" alt="Black African male model in a ceremonial robe"></a>
+                    <h4>Ceremonial Robe</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>105,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-11.webp" alt="Black African male model in casual Kitenge wear"></a>
+                    <h4>Kitenge Shorts</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>79,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-12.webp" alt="Black African model with woven accessories"></a>
+                    <h4>Woven Belts</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>26,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-13.webp" alt="Black African model in traditional dance attire"></a>
+                    <h4>Dance Attire</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>195,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-14.webp" alt="Black African model in Intore warrior attire"></a>
+                    <h4>Intore Regalia</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>95,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-15.webp" alt="Black African female model in embroidered Mushanana"></a>
+                    <h4>Embroidered Mushanana</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p>39,000 RWF</p>
+                </div>
+                <div class="childprods">
+                    <a href="./product_details.html"><img src="./images/products/product-16.webp" alt="Black African model in contemporary Rwandan fashion"></a>
+                    <h4>Modern Kitenge Top</h4>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>26,000 RWF</p>
+                </div>
+            </div>
+        </div>
+        <div class="more">
+            <a href="./products.html">See More</a>
+        </div>
+        <div class="offer">
+            <div class="small-container">
+                <div class="child">
+                    <div class="halfchild">
+                        <img src="./images/promos/exclusive2.png" class="offer-img">
+                    </div>
+                    <div class="halfchild">
+                        <p>Exclusively avaliable here</p>
+                        <h1>Traditional Inyambo Horns</h1>
+                        <small>
+                            Decorative cow horn artifacts, polished and engraved by master artisans. A true piece of Rwandan history.<br>
+                        </small>
+                        <a href="./product_details.html" class="btn">Buy Now &#8594;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial">
+            <div class="small-container">
+                <h3><i class="fa fa-quote-left"></i> &emsp;See what our clients say about us -</h3>
+                <div class="child">
+                    <div class="testchild">
+                        <p>The quality of the Mushanana I ordered exceeded all my expectations. Delivered right to my door in Kigali.</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <img src="./images/testimonials/jemma.jpg">
+                        <h3>Keza Bella</h3>
+                    </div>
+                    <div class="testchild">
+                        <p>Finally a place that celebrates our culture. The Kitenge collection is beautiful and the prices are fair.</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <img src="./images/testimonials/rachel.jpg">
+                        <h3>Uwase Divine</h3>
+                    </div>
+                    <div class="testchild">
+                        <p>I ordered a Wedding Mushanana Set for my ceremony and it was absolutely perfect. Highly recommend.</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <img src="./images/testimonials/anne.jpg">
+                        <h3>Mutoni Alice</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="child">
+                    <div class="footerChild1">
+                        <a href="./index.html" class="logo-text" style="align-items:center;margin-bottom:15px">
+                            <span class="logo-main" style="font-size:20px">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                        <h4>Mail us at: <a href="mailto:contact@rwandatrad.rw">contact@rwandatrad.rw</a></h4>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="#">Payments</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Our Socials</h3>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Registered Office</h3>
+                        <ul>
+                            <li>KN 2 Ave, Kigali City Tower</li>
+                            <li>Nyarugenge, Kigali</li>
+                            <li>Rwanda</li>
+                            <li>-</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="belowfooter">
+                    &copy; Thomas Clothing, 2024 <br>
+                    All rights reserved.
+                </div>
+            </div>
+        </div>
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/notifications.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/products.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                Cart.updateBadge();
+                loadHomepageProducts();
+                // Show bell only for logged-in users
+                if (Auth.isLoggedIn()) {
+                    document.getElementById('notif-bell').style.display = 'inline-block';
+                    Notifications.init();
+                }
+            });
+        </script>
+    </body>
+</html>

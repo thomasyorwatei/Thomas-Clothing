@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkout | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                    </div>
+                    <nav>
+                        <ul class="nav-menu">
+                            <li class="nav-item"><a href="index.html">Home</a></li>
+                            <li class="nav-item"><a href="products.html">Products</a></li>
+                            <li class="nav-item"><a href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a href="account.html">Account</a></li>
+                        </ul>
+                    </nav>
+                    <a href="./cart.html" style="position:relative">
+                        <img class="cart" src="./images/header/cart.svg">
+                        <span id="cart-count" style="display:none;position:absolute;top:-8px;right:-8px;background:#c0392b;color:white;border-radius:50%;width:18px;height:18px;font-size:11px;text-align:center;line-height:18px"></span>
+                    </a>
+                    <div class="toggle"><i class="fa fa-bars"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="small-container" style="margin-top:60px;margin-bottom:60px">
+            <h2>Checkout</h2>
+            <div class="line1"></div>
+
+            <div class="checkout-layout">
+                <!-- LEFT: Form -->
+                <div class="checkout-form-col">
+                    <form id="checkout-form" novalidate>
+                        <div id="form-errors" class="error-box" style="display:none"></div>
+
+                        <h3>Customer Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkout-first-name">First Name *</label>
+                                <input type="text" id="checkout-first-name" placeholder="Amina" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-last-name">Last Name *</label>
+                                <input type="text" id="checkout-last-name" placeholder="Uwase" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkout-email">Email Address *</label>
+                                <input type="email" id="checkout-email" placeholder="amina@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-phone">Phone Number</label>
+                                <input type="tel" id="checkout-phone" placeholder="0781234567">
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top:30px">Shipping Address</h3>
+                        <div class="form-group">
+                            <label for="checkout-street">Street Address *</label>
+                            <input type="text" id="checkout-street" placeholder="KN 5 Ave, House 12" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkout-city">City *</label>
+                                <input type="text" id="checkout-city" placeholder="Kigali" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-province">Province</label>
+                                <select id="checkout-province">
+                                    <option value="">Select Province</option>
+                                    <option value="Kigali City">Kigali City</option>
+                                    <option value="Northern Province">Northern Province</option>
+                                    <option value="Southern Province">Southern Province</option>
+                                    <option value="Eastern Province">Eastern Province</option>
+                                    <option value="Western Province">Western Province</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top:30px">Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="checkout-payment-radio" id="pay-cod" value="cash_on_delivery" checked>
+                                <span><i class="fa fa-money"></i> Cash on Delivery</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="checkout-payment-radio" id="pay-momo" value="mobile_money">
+                                <span><i class="fa fa-mobile"></i> Mobile Money (MTN / Airtel)</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="checkout-payment-radio" id="pay-bank" value="bank_transfer">
+                                <span><i class="fa fa-bank"></i> Bank Transfer</span>
+                            </label>
+                        </div>
+                        <!-- Hidden input that gets set from radio selection -->
+                        <input type="hidden" id="checkout-payment" value="cash_on_delivery">
+
+                        <div class="form-group" style="margin-top:20px">
+                            <label for="checkout-notes">Order Notes (optional)</label>
+                            <textarea id="checkout-notes" rows="3" placeholder="Any special instructions..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn" id="place-order-btn" style="width:100%;margin-top:20px;text-align:center;cursor:pointer;border:none;font-family:inherit;font-size:15px;font-weight:600;letter-spacing:0.5px">
+                            Place Order
+                        </button>
+                    </form>
+                </div>
+
+                <!-- RIGHT: Order Summary -->
+                <div class="checkout-summary-col">
+                    <h3>Order Summary</h3>
+                    <ul id="checkout-summary-items" class="checkout-items-list"></ul>
+                    <div class="checkout-totals">
+                        <div class="totals-row">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">—</span>
+                        </div>
+                        <div class="totals-row">
+                            <span>VAT (18%)</span>
+                            <span id="checkout-tax">—</span>
+                        </div>
+                        <div class="totals-row">
+                            <span>Shipping</span>
+                            <span id="checkout-shipping">—</span>
+                        </div>
+                        <div class="totals-row totals-total">
+                            <span>Total</span>
+                            <span id="checkout-total">—</span>
+                        </div>
+                    </div>
+                    <a href="./cart.html" style="display:block;text-align:center;margin-top:15px;font-size:13px">
+                        &#8592; Back to Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="child">
+                    <div class="footerChild1">
+                        <a href="./index.html" class="logo-text" style="align-items:center;margin-bottom:15px">
+                            <span class="logo-main" style="font-size:20px">Thomas Clothing</span>
+                            <span class="logo-sub">Premium Collection</span>
+                        </a>
+                        <h4>Mail us at: <a href="mailto:contact@rwandatrad.rw">contact@rwandatrad.rw</a></h4>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Help</h3>
+                        <ul>
+                            <li><a href="#">Payments</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Return Policy</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footerChild2">
+                        <h3>Registered Office</h3>
+                        <ul>
+                            <li>KN 2 Ave, Kigali City Tower</li>
+                            <li>Nyarugenge, Kigali</li>
+                            <li>Rwanda</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="belowfooter">&copy; Thomas Clothing, 2024. All rights reserved.</div>
+            </div>
+        </div>
+
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/cart.js"></script>
+        <script src="./src/js/checkout.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            // Sync payment radio to hidden input
+            document.querySelectorAll('input[name="checkout-payment-radio"]').forEach(radio => {
+                radio.addEventListener('change', () => {
+                    document.getElementById('checkout-payment').value = radio.value;
+                });
+            });
+            Cart.updateBadge();
+        </script>
+    </body>
+</html>

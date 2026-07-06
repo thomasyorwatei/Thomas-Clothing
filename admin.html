@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard | Thomas Clothing</title>
+        <link rel="stylesheet" href="./src/css/main.css">
+        <link rel="stylesheet" href="./src/css/admin.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/svg+xml" href="./images/header/favicon.svg">
+    </head>
+    <body style="background:#1a1a1a">
+        <div class="admin-header">
+            <div class="admin-header-inner">
+                <div class="logo">
+                        <a href="./index.html" class="logo-text">
+                            <span class="logo-main" style="font-size:18px">Thomas Clothing</span>
+                            <span class="logo-sub">Admin Dashboard</span>
+                        </a>
+                    </div>
+                <div>
+                    <span id="admin-name" style="margin-right:20px;font-size:14px"></span>
+                    <!-- Notification Bell -->
+                    <span id="notif-bell" style="position:relative;cursor:pointer;margin-right:18px;font-size:20px" title="Notifications">
+                        🔔
+                        <span id="notif-badge" style="display:none;position:absolute;top:-6px;right:-8px;background:#c0392b;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;text-align:center;line-height:18px;font-weight:bold"></span>
+                    </span>
+                    <div id="notif-dropdown" style="display:none;position:absolute;right:80px;top:55px;width:320px;max-height:380px;overflow-y:auto;background:#2a2a2a;border:1px solid #444;border-radius:8px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.5)"></div>
+                    <button class="btn" onclick="Auth.logout()" style="padding:5px 20px;margin:0">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <nav class="admin-sidebar">
+                <ul>
+                    <li><a href="#" class="admin-nav-link active" data-tab="overview"><i class="fa fa-dashboard"></i> Overview</a></li>
+                    <li><a href="#" class="admin-nav-link" data-tab="orders"><i class="fa fa-list-alt"></i> Orders</a></li>
+                    <li><a href="#" class="admin-nav-link" data-tab="products"><i class="fa fa-th-large"></i> Products</a></li>
+                    <li><a href="#" class="admin-nav-link" data-tab="users"><i class="fa fa-users"></i> Customers</a></li>
+                    <li><a href="./index.html"><i class="fa fa-home"></i> View Store</a></li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="admin-main">
+
+                <!-- OVERVIEW TAB -->
+                <section id="tab-overview" class="admin-tab active">
+                    <h2>Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fa fa-list-alt"></i>
+                            <div>
+                                <h3 id="stat-orders">—</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa fa-users"></i>
+                            <div>
+                                <h3 id="stat-customers">—</h3>
+                                <p>Customers</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa fa-th-large"></i>
+                            <div>
+                                <h3 id="stat-products">—</h3>
+                                <p>Active Products</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa fa-money"></i>
+                            <div>
+                                <h3 id="stat-revenue">—</h3>
+                                <p>Total Revenue</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top:40px;margin-bottom:15px">Recent Orders</h3>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-orders-body">
+                                <tr><td colspan="5" style="text-align:center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ORDERS TAB -->
+                <section id="tab-orders" class="admin-tab" style="display:none">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+                        <h2>All Orders</h2>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap">
+                            <input type="text" id="orders-search" placeholder="Search orders..." class="admin-input">
+                            <select id="orders-status-filter" class="admin-select">
+                                <option value="">All Statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="processing">Processing</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                            <button class="btn" id="orders-search-btn" style="margin:0;padding:8px 15px">Search</button>
+                        </div>
+                    </div>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Email</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Payment</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-orders-body">
+                                <tr><td colspan="7" style="text-align:center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="orders-pagination" class="admin-pagination"></div>
+                </section>
+
+                <!-- PRODUCTS TAB -->
+                <section id="tab-products" class="admin-tab" style="display:none">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+                        <h2>Products</h2>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap">
+                            <input type="text" id="products-search" placeholder="Search products..." class="admin-input">
+                            <button class="btn" id="products-search-btn" style="margin:0;padding:8px 15px">Search</button>
+                            <button class="btn" id="add-product-btn" style="margin:0;padding:8px 15px;background:#5fa387">+ Add Product</button>
+                        </div>
+                    </div>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-products-body">
+                                <tr><td colspan="6" style="text-align:center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="products-pagination" class="admin-pagination"></div>
+                </section>
+
+                <!-- USERS TAB -->
+                <section id="tab-users" class="admin-tab" style="display:none">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+                        <h2>Customers</h2>
+                        <div style="display:flex;gap:10px">
+                            <input type="text" id="users-search" placeholder="Search customers..." class="admin-input">
+                            <button class="btn" id="users-search-btn" style="margin:0;padding:8px 15px">Search</button>
+                        </div>
+                    </div>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-users-body">
+                                <tr><td colspan="5" style="text-align:center">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="users-pagination" class="admin-pagination"></div>
+                </section>
+
+            </main>
+        </div>
+
+        <!-- Product Modal -->
+        <div id="product-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:999;overflow-y:auto">
+            <div style="background:#2a2a2a;border:1px solid #444;border-radius:10px;max-width:520px;margin:40px auto;padding:30px;position:relative">
+                <h3 id="product-modal-title" style="margin-top:0;color:#ffffff;font-size:18px;margin-bottom:20px">Add Product</h3>
+                <form id="product-form">
+                    <input type="hidden" id="pf-id">
+                    <div class="form-group">
+                        <label style="color:antiquewhite">Name *</label>
+                        <input type="text" id="pf-name" class="admin-input" style="width:100%;box-sizing:border-box" required>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:antiquewhite">Category *</label>
+                        <select id="pf-category" class="admin-select" style="width:100%;box-sizing:border-box" required></select>
+                    </div>
+                    <div style="display:flex;gap:15px">
+                        <div class="form-group" style="flex:1">
+                            <label style="color:antiquewhite">Price (RWF) *</label>
+                            <input type="number" id="pf-price" class="admin-input" style="width:100%;box-sizing:border-box" min="0" required>
+                        </div>
+                        <div class="form-group" style="flex:1">
+                            <label style="color:antiquewhite">Stock Quantity *</label>
+                            <input type="number" id="pf-stock" class="admin-input" style="width:100%;box-sizing:border-box" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:antiquewhite">Image URL</label>
+                        <input type="text" id="pf-image" class="admin-input" style="width:100%;box-sizing:border-box" placeholder="https://..." oninput="updateImagePreview(this.value)">
+                        <div id="pf-image-preview" style="margin-top:8px;display:none">
+                            <img id="pf-image-preview-img" src="" alt="Preview" style="max-width:100px;max-height:100px;border-radius:6px;border:1px solid #444;object-fit:cover">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:antiquewhite">Description</label>
+                        <textarea id="pf-description" class="admin-input" style="width:100%;box-sizing:border-box;min-height:80px;resize:vertical"></textarea>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+                        <input type="checkbox" id="pf-featured" style="width:auto;accent-color:#5fa387">
+                        <label for="pf-featured" style="margin:0;color:antiquewhite">Featured product</label>
+                    </div>
+                    <div id="product-form-error" class="error-box" style="display:none"></div>
+                    <div style="display:flex;gap:10px;justify-content:flex-end">
+                        <button type="button" id="product-modal-cancel" class="btn-sm" style="padding:8px 18px">Cancel</button>
+                        <button type="submit" class="btn" style="margin:0;padding:8px 20px">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="./src/js/config.js"></script>
+        <script src="./src/js/api.js"></script>
+        <script src="./src/js/auth.js"></script>
+        <script src="./src/js/notifications.js"></script>
+        <script src="./src/js/admin.js"></script>
+        <script src="./src/js/script.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (!guardAdmin()) return;
+
+                const user = Auth.getUser();
+                if (user) document.getElementById('admin-name').textContent = `${user.first_name} ${user.last_name}`;
+
+                Notifications.init();
+
+                // Tab navigation
+                document.querySelectorAll('.admin-nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tab = link.dataset.tab;
+                        document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
+                        document.querySelectorAll('.admin-tab').forEach(t => t.style.display = 'none');
+                        link.classList.add('active');
+                        document.getElementById(`tab-${tab}`).style.display = 'block';
+                        // Load data for the tab
+                        if (tab === 'overview') loadDashboard();
+                        if (tab === 'orders') loadAdminOrders();
+                        if (tab === 'products') loadAdminProducts();
+                        if (tab === 'users') loadAdminUsers();
+                    });
+                });
+
+                // Search handlers
+                document.getElementById('orders-search-btn').addEventListener('click', () => {
+                    loadAdminOrders(1, document.getElementById('orders-search').value, document.getElementById('orders-status-filter').value);
+                });
+                document.getElementById('products-search-btn').addEventListener('click', () => {
+                    loadAdminProducts(1, document.getElementById('products-search').value);
+                });
+                document.getElementById('users-search-btn').addEventListener('click', () => {
+                    loadAdminUsers(1, document.getElementById('users-search').value);
+                });
+
+                // Init product modal
+                initProductModal();
+
+                // Load overview by default
+                loadDashboard();
+            });
+        </script>
+    </body>
+</html>

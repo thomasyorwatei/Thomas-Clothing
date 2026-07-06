@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Frontend — serves HTML/CSS/JS via nginx
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+    container_name: rwanda-trad-frontend
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - rwanda-trad-network
+
+networks:
+  rwanda-trad-network:
+    driver: bridge
