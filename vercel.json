@@ -4,29 +4,50 @@
   "buildCommand": "npm install",
   "outputDirectory": "./",
   "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10
-    }
+    "api/auth/index.js":          { "maxDuration": 10 },
+    "api/admin/index.js":         { "maxDuration": 10 },
+    "api/cart/index.js":          { "maxDuration": 10 },
+    "api/orders/index.js":        { "maxDuration": 10 },
+    "api/products/index.js":      { "maxDuration": 10 },
+    "api/products/[id].js":       { "maxDuration": 10 },
+    "api/categories/index.js":    { "maxDuration": 10 },
+    "api/checkout/index.js":      { "maxDuration": 10 },
+    "api/contact/index.js":       { "maxDuration": 10 },
+    "api/notifications/index.js": { "maxDuration": 10 }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/products",            "destination": "/products.html" },
-    { "source": "/product/:path*",      "destination": "/product_details.html" },
-    { "source": "/cart",                "destination": "/cart.html" },
-    { "source": "/checkout",            "destination": "/checkout.html" },
-    { "source": "/order-confirmation",  "destination": "/order-confirmation.html" },
-    { "source": "/account",             "destination": "/account.html" },
-    { "source": "/profile",             "destination": "/profile.html" },
-    { "source": "/admin",               "destination": "/admin.html" }
+    { "source": "/api/auth/login",            "destination": "/api/auth/index" },
+    { "source": "/api/auth/register",         "destination": "/api/auth/index" },
+    { "source": "/api/auth/me",               "destination": "/api/auth/index" },
+    { "source": "/api/auth/forgot-password",  "destination": "/api/auth/index" },
+    { "source": "/api/auth/reset-password",   "destination": "/api/auth/index" },
+    { "source": "/api/admin/dashboard",       "destination": "/api/admin/index" },
+    { "source": "/api/admin/orders",          "destination": "/api/admin/index" },
+    { "source": "/api/admin/products",        "destination": "/api/admin/index" },
+    { "source": "/api/admin/users",           "destination": "/api/admin/index" },
+    { "source": "/api/cart/items/:itemId",    "destination": "/api/cart/index" },
+    { "source": "/api/cart/items",            "destination": "/api/cart/index" },
+    { "source": "/api/cart",                  "destination": "/api/cart/index" },
+    { "source": "/api/orders/:id",            "destination": "/api/orders/index" },
+    { "source": "/api/orders",                "destination": "/api/orders/index" },
+    { "source": "/api/(.*)",                  "destination": "/api/$1" },
+    { "source": "/products",                  "destination": "/products.html" },
+    { "source": "/product/:path*",            "destination": "/product_details.html" },
+    { "source": "/cart",                      "destination": "/cart.html" },
+    { "source": "/checkout",                  "destination": "/checkout.html" },
+    { "source": "/order-confirmation",        "destination": "/order-confirmation.html" },
+    { "source": "/account",                   "destination": "/account.html" },
+    { "source": "/profile",                   "destination": "/profile.html" },
+    { "source": "/admin",                     "destination": "/admin.html" }
   ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options",  "value": "nosniff" },
-        { "key": "X-Frame-Options",         "value": "DENY" },
-        { "key": "X-XSS-Protection",        "value": "1; mode=block" },
-        { "key": "Referrer-Policy",         "value": "strict-origin-when-cross-origin" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options",        "value": "DENY" },
+        { "key": "X-XSS-Protection",       "value": "1; mode=block" },
+        { "key": "Referrer-Policy",        "value": "strict-origin-when-cross-origin" }
       ]
     },
     {
