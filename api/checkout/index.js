@@ -2,7 +2,8 @@ const { supabaseAdmin } = require('../_lib/supabase');
 const { handleCors } = require('../_lib/cors');
 const { validateCheckout, sanitizeString } = require('../_lib/validators');
 const { v4: uuidv4 } = require('uuid');
-const { sendToAdmins } = require('../notifications/sseClients');
+// SSE real-time push not available in serverless — notifications saved to DB only
+function sendToAdmins() {}
 
 function generateOrderNumber() {
     const timestamp = Date.now().toString(36).toUpperCase();
