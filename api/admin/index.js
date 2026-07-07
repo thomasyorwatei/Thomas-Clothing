@@ -1,7 +1,8 @@
 const { supabaseAdmin } = require('../_lib/supabase');
 const { handleCors } = require('../_lib/cors');
 const { adminMiddleware } = require('../_lib/adminMiddleware');
-const { sendToUser } = require('../notifications/sseClients');
+// SSE real-time push not available in serverless — notifications saved to DB only
+function sendToUser() {}
 
 const VALID_STATUSES = ['pending','confirmed','processing','shipped','delivered','cancelled','refunded'];
 
