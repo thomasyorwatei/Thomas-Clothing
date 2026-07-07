@@ -23,7 +23,7 @@ module.exports = async function handler(req, res) {
         // Email to store owner
         await transporter.sendMail({
             from: `"Thomas Clothing Contact" <${process.env.GMAIL_USER}>`,
-            to: 'roujeeey@gmail.com',
+            to: 'juiceyorwatei2030@gmail.com',
             replyTo: email,
             subject: `[Contact Form] ${subject || 'New Message'} — from ${name}`,
             html: `
